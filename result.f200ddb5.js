@@ -497,7 +497,7 @@ const controlSearchResaults = async function (name) {
           </div>
 
               <a href='./desc.html?result=${x.id}'>
-              <div>
+              <div class='result-title'>
                 <img class = "result-img" src="${x.orgImage}" alt="" />
                 <p>${x.title}</p>
                 </div></a>

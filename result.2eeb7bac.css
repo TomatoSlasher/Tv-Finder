@@ -68,11 +68,37 @@ body {
   }
 }
 @media only screen and (max-width: 450px) {
+  .show {
+    grid-template-columns: repeat(1, 1fr);
+    margin: 0;
+  }
+  .show-box {
+    margin: 0;
+    margin: 2rem 0rem;
+    margin: auto;
+    width: 50%;
+    padding: 7rem 0rem;
+    transform: scale(1.4);
+  }
   .search {
-    width: 100%;
-    display: flex;
+    width: 90%;
+
+    padding: 0;
+    /* display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
+  }
+  .result-img {
+    margin: 0;
+  }
+  .result-title img {
+    margin: 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .result-title p {
+    margin: 0;
   }
   .logo {
     width: 100%;

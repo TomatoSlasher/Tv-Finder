@@ -1,25 +1,29 @@
 @media only screen and (max-width: 1040px) {
-  /* .border-radius {
-    position: absolute;
-    height: 80%;
-    width: 200%;
-
-    left: -30rem;
+  html {
+    background-image: linear-gradient(to bottom, #833ab4, #fd1d1d);
+    background-repeat: no-repeat;
+    height: 120%;
+    width: auto;
+    overflow: scroll;
+  }
+  .border-radius {
+    display: none;
   }
   .main {
-    margin-top: 25rem;
-    margin-left: 3rem;
-  } */
+    margin-top: 15rem;
+  }
   .main h1 {
-    font-size: 45px;
+    font-size: 55px;
   }
   .search-bar {
-    width: 20rem;
+    width: 80%;
     position: absolute;
-    height: 3.4rem;
+    height: 3.6rem;
   }
   .search-button {
-    margin-left: 15rem;
+    position: absolute;
+    right: 5rem;
+    height: 3.6rem;
   }
 }
 @media only screen and (max-width: 690px) {
@@ -49,13 +53,25 @@
   .bookmark-tab {
     height: 3.5rem;
   }
+  .main {
+    height: 100%;
+
+    margin-top: 10rem;
+  }
   .main h1 {
     width: 100%;
-    font-size: 35px;
+    font-size: 40px;
     line-height: 3rem;
+    margin-bottom: 4rem;
+  }
+  .search-button {
+    position: absolute;
+    right: 1rem;
+    /* height: 3.rem; */
   }
   .search-bar {
     width: 90%;
+    margin-right: 2rem;
   }
 }
 
