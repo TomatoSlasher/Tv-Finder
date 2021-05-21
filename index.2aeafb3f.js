@@ -521,10 +521,10 @@ const state = {
 };
 const loadTv = async function (show) {
   try {
-    const res = await fetch(`http://api.tvmaze.com/shows/${show}`);
+    const res = await fetch(`https://api.tvmaze.com/shows/${show}`);
     const data = await res.json();
     const tv = data;
-    const res2 = await fetch(`http://api.tvmaze.com/shows/${tv.id}/images`);
+    const res2 = await fetch(`https://api.tvmaze.com/shows/${tv.id}/images`);
     const images = await res2.json();
     let bgImages = images.filter(i => i.type == "background");
     console.log(bgImages);
@@ -541,9 +541,9 @@ const loadTv = async function (show) {
     }
     let bgImage = bgImages[0].resolutions.original.url;
     const premier = tv.premiered.substring(0, 4);
-    const castData = await fetch(`http://api.tvmaze.com/shows/${tv.id}/cast`);
+    const castData = await fetch(`https://api.tvmaze.com/shows/${tv.id}/cast`);
     const castJson = await castData.json();
-    const epData = await fetch(`http://api.tvmaze.com/shows/${tv.id}/episodes`);
+    const epData = await fetch(`https://api.tvmaze.com/shows/${tv.id}/episodes`);
     const epJson = await epData.json();
     // console.log(epJson);
     const cleanEpData = epJson.filter(src => {
@@ -579,7 +579,7 @@ const loadTv = async function (show) {
 const loadSearchResaults = async function (query) {
   try {
     state.search.query = query;
-    const res = await fetch(`http://api.tvmaze.com/search/shows?q=${query}}`);
+    const res = await fetch(`https://api.tvmaze.com/search/shows?q=${query}}`);
     const data = await res.json();
     const cleanData = data.filter(src => {
       if (!src.show.image) {
