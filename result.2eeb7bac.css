@@ -109,6 +109,9 @@ body {
     margin-left: 3rem;
     margin-top: 1rem;
   }
+  .show li:hover {
+    transform: none;
+  }
 }
 
 /*# sourceMappingURL=result.2eeb7bac.css.map */
