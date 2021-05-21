@@ -1,0 +1,153 @@
+:root {
+  --bg: linear-gradient(to right bottom, rgb(33, 17, 182), rgb(148, 30, 187));
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+
+  background-image: var(--bg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 120vh;
+}
+
+.container {
+  background-color: rgb(24, 24, 24);
+  width: 75rem;
+  height: 60rem;
+  margin: 4vw auto;
+
+  border-radius: 9px;
+}
+
+.main {
+  text-align: center;
+  padding: 10rem 0rem;
+  line-height: 6rem;
+}
+
+.main h1 {
+  color: white;
+  font-size: 80px;
+}
+textarea,
+input {
+  outline: none;
+}
+.main input {
+  border: none;
+  background-image: none;
+  background-color: white;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+
+  box-shadow: none;
+  width: 30rem;
+  padding: 0.9rem 1rem;
+  border-radius: 20px;
+}
+
+.main button {
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 30px;
+  background-image: var(--bg);
+  color: white;
+  margin-left: 1rem;
+  transition: transform 0.2s;
+  outline: none;
+}
+
+.main button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.show {
+  /* margin-top: 4rem; */
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  margin-left: 2rem;
+  padding-top: 1rem;
+  list-style: none;
+}
+
+.show-box {
+  width: 11rem;
+  height: 16rem;
+  background-image: #333;
+  border-radius: 10px;
+  margin-top: 2rem;
+}
+.show-box img {
+  border-radius: 10px;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.show-box p {
+  text-align: center;
+  color: white;
+  line-height: 1rem;
+}
+
+.show-box img:hover {
+  opacity: 0.7;
+}
+.show-desc {
+  color: white;
+}
+
+.bg-image {
+  width: 100%;
+  height: 530px;
+  color: black;
+  opacity: 0.4;
+  -webkit-mask-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(rgba(0, 0, 0, 1)),
+    to(rgba(0, 0, 0, 0))
+  );
+  border-radius: 10px;
+}
+.bottom {
+  display: flex;
+}
+.poster-image {
+  border-radius: 10px;
+  margin-left: 1rem;
+}
+.rating {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 0.5rem;
+  margin-right: 1rem;
+}
+.rating i {
+  color: yellow;
+}
+.h1-rating {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+}
+
+.h1-rating h1 {
+  margin-left: 1rem;
+}
+
+.desc {
+  margin-left: 1rem;
+  margin-top: 3rem;
+}
+
+/*# sourceMappingURL=search.de60a1d7.css.map */

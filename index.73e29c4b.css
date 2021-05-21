@@ -1,0 +1,62 @@
+@media only screen and (max-width: 1040px) {
+  /* .border-radius {
+    position: absolute;
+    height: 80%;
+    width: 200%;
+
+    left: -30rem;
+  }
+  .main {
+    margin-top: 25rem;
+    margin-left: 3rem;
+  } */
+  .main h1 {
+    font-size: 45px;
+  }
+  .search-bar {
+    width: 20rem;
+    position: absolute;
+    height: 3.4rem;
+  }
+  .search-button {
+    margin-left: 15rem;
+  }
+}
+@media only screen and (max-width: 690px) {
+  html {
+    background-image: linear-gradient(to bottom, #833ab4, #fd1d1d);
+    background-repeat: no-repeat;
+    height: 120%;
+    width: auto;
+    overflow: scroll;
+    /* background-repeat: no-repeat; */
+
+    /* background: no-repeat; */
+  }
+  .border-radius {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .header {
+    display: block;
+  }
+  .logo {
+    text-align: center;
+    padding-bottom: 1rem;
+  }
+  .bookmark-tab {
+    height: 3.5rem;
+  }
+  .main h1 {
+    width: 100%;
+    font-size: 35px;
+    line-height: 3rem;
+  }
+  .search-bar {
+    width: 90%;
+  }
+}
+
+/*# sourceMappingURL=index.73e29c4b.css.map */

@@ -1,0 +1,82 @@
+:root {
+  --prime: #ffb800;
+  --sec: #3581fb;
+  --bg: linear-gradient(to right bottom, #833ab4, #fd1d1d);
+  --button: linear-gradient(to right bottom, #833ab4, #fd1d1d);
+  --primary: #081c22;
+
+  /* --text: linear-gradient(to right bottom, #eb3fc0, #aa2222); */
+}
+
+body {
+  height: 150vh;
+  background-color: #081c22;
+  overflow-y: scroll;
+}
+
+.search button {
+  position: absolute;
+  margin-left: 26rem;
+}
+.search button i {
+  height: 1rem;
+  width: 0;
+}
+@media only screen and (max-width: 1040px) {
+  .show {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media only screen and (max-width: 900px) {
+  .show {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .search {
+    /* width: 90%; */
+  }
+  .search-bar {
+    height: 3.2rem;
+    width: 100%;
+  }
+  .search-button {
+    right: 0.2rem;
+  }
+  .logo {
+    text-align: center;
+  }
+  .result-head {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .show {
+    margin: 0rem;
+    padding: 0rem;
+    grid-template-columns: repeat(2, 1fr);
+    align-content: center;
+    margin-top: 3rem;
+    margin-right: 1.5rem;
+  }
+  .show-box {
+    display: table;
+    margin: 0px auto 0px auto;
+    margin-bottom: 3rem;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .search {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .logo {
+    width: 100%;
+  }
+}
+
+/*# sourceMappingURL=result.2eeb7bac.css.map */
