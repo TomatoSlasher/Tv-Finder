@@ -48,7 +48,7 @@ body {
   margin-top: 0.1rem;
 }
 .logo {
-  margin: 2nrem;
+  margin: 2rem;
 }
 .desc-header {
   padding: 0rem;
@@ -182,7 +182,7 @@ body {
   }
   .search-button {
     position: absolute;
-    right: 3.5rem;
+    right: 1rem;
   }
 
   .desc-header-right {
@@ -266,7 +266,11 @@ body {
   }
   .season-box {
     margin: 0;
-    width: 16.5rem;
+    padding: 0;
+  }
+  .select {
+    padding: 0;
+    padding: 0rem 0.5rem;
   }
   .ep-list img {
     width: 100%;
@@ -289,6 +293,9 @@ body {
   .bookmark-list {
     width: 100%;
     border-radius: 0;
+  }
+  .next-prev-box {
+    margin-top: 2rem;
   }
 }
 

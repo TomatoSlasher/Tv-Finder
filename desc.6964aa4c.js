@@ -582,9 +582,10 @@ const showTv = async function (show1) {
       const epFilter = tv.ep.filter(x => x.season == num);
       return dynamicEp(epFilter);
     };
+    showEp(1);
     const epFilter1 = tv.ep.filter(x => x.season == 1);
-    dynamicEp(epFilter1);
-    select.addEventListener("click", e => {
+    console.log(select.value);
+    select.addEventListener("change", e => {
       epContainer.innerHTML = "";
       seasonCounter.innerHTML = "";
       year.innerHTML = "";
