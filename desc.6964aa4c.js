@@ -571,9 +571,10 @@ const showTv = async function (show1) {
           <h2>${i + 1}.${x.name}</h2>
           <p class="ep-min">${x.runtime}m</p>
         </div>
-        <p class="ep-desc">
-          ${x.summary}
-        </p>
+
+          <div class='epdesc'>
+                ${x.summary}
+          </div>
       </div>`;
       }).join("");
       epContainer.insertAdjacentHTML("afterbegin", epMarkup);
