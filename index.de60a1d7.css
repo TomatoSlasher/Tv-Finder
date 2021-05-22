@@ -3,6 +3,12 @@
     stroke-dashoffset: 0;
   }
 } */
+.fas {
+  text-rendering: optimizeLegibility !important;
+}
+.far {
+  text-rendering: optimizeLegibility !important;
+}
 @font-face {
   font-family: "AmericanCaptain";
   src: url(AmericanCaptain-MdEY.3c103fea.woff);
@@ -146,15 +152,16 @@ input {
   background-color: white;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
-
+  position: absolute;
   box-shadow: none;
-
-  width: 30rem;
+  height: 3.7rem;
+  width: 31rem;
   padding: 0.9rem 1rem;
   border-radius: 30px;
 }
 .search-button {
-  margin-left: 1rem;
+  /* position: absolute; */
+  right: -13rem;
 }
 button {
   position: relative;

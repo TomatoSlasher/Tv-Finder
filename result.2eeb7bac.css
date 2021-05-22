@@ -13,7 +13,13 @@ body {
   background-color: #081c22;
   overflow-y: scroll;
 }
-
+html,
+body {
+  overflow-x: hidden;
+}
+body {
+  position: relative;
+}
 .search button {
   position: absolute;
   margin-left: 26rem;
