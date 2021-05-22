@@ -263,7 +263,7 @@ body {
     margin-right: auto;
   }
   .ep-list {
-    width: 80%;
+    width: 85%;
     margin-left: 2rem;
     margin-top: 1rem;
   }
@@ -307,7 +307,7 @@ body {
   }
   .epdesc p {
     font-family: Arial, Helvetica, sans-serif;
-    height: 5.5rem !important;
+    height: rem !important;
     margin-top: 1rem;
     overflow: hidden;
   }

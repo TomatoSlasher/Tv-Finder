@@ -465,6 +465,7 @@ const showTv = async function (show1) {
     const {tv} = _modelJs.state;
     let {bookmark} = _modelJs.state;
     // bookmark.push(tv.id);
+    console.log(tv.ep);
     const markup = `
 
  <div class="show-desc">
@@ -573,7 +574,7 @@ const showTv = async function (show1) {
         </div>
 
           <div class='epdesc'>
-                ${x.summary}
+                ${x.summary.slice(0, 125)}
           </div>
       </div>`;
       }).join("");
