@@ -574,7 +574,7 @@ const showTv = async function (show1) {
         </div>
 
           <div class='epdesc'>
-                ${x.summary.slice(0, 125)}
+                ${x.summary.slice(0, 123)}
           </div>
       </div>`;
       }).join("");
