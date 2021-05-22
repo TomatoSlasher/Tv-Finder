@@ -159,9 +159,6 @@ input {
   padding: 0.9rem 1rem;
   border-radius: 30px;
 }
-.search-button {
-  /* margin-left: 1rem; */
-}
 button {
   position: relative;
   border: none;
