@@ -152,16 +152,15 @@ input {
   background-color: white;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
-  position: absolute;
+
   box-shadow: none;
-  height: 3.7rem;
-  width: 31rem;
+
+  width: 30rem;
   padding: 0.9rem 1rem;
   border-radius: 30px;
 }
 .search-button {
-  /* position: absolute; */
-  right: -13rem;
+  /* margin-left: 1rem; */
 }
 button {
   position: relative;

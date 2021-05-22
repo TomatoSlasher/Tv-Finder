@@ -187,14 +187,16 @@ body {
     margin-top: 0.1rem;
   }
   .search {
-    width: 100%;
+    /* margin: 0; */
+    margin: 2rem;
   }
   .search-bar {
     width: 90%;
+    height: 3.4rem;
   }
   .search-button {
     position: absolute;
-    right: 1rem;
+    right: 6%;
   }
 
   .desc-header-right {
@@ -303,7 +305,10 @@ body {
     margin-right: auto;
   }
   .bookmark-tab {
-    width: auto !important;
+    width: 90%;
+    margin: 0;
+    margin: 2rem;
+    height: 3.4rem;
   }
   .show-text {
     margin: 0;
