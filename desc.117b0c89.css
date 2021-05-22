@@ -216,6 +216,11 @@ body {
     height: 17rem;
     position: absolute;
     /* width: 105%; */
+    mask: linear-gradient(
+      to top,
+      rgba(245, 0, 0, 0) 0%,
+      rgb(214, 21, 21, 1) 40%
+    );
     -webkit-mask: linear-gradient(
       to top,
       rgba(245, 0, 0, 0) 0%,

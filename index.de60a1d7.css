@@ -69,8 +69,6 @@ select {
   outline: none !important;
   box-shadow: none !important;
 }
-button {
-}
 .logo {
   z-index: 10;
   -webkit-touch-callout: none;
@@ -168,6 +166,7 @@ button {
   outline: none;
   font-weight: bold;
   display: flex;
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -285,6 +284,13 @@ button:after {
     linear-gradient(to top, rgba(245, 0, 0, 0) 0%, rgb(214, 21, 21, 1) 20%);
 
   -webkit-mask-composite: source-in;
+  mask-composite: source-in;
+  mask: linear-gradient(
+      to right,
+      rgba(245, 0, 0, 0) 0%,
+      rgb(214, 21, 21, 1) 60%
+    ),
+    linear-gradient(to top, rgba(245, 0, 0, 0) 0%, rgb(214, 21, 21, 1) 20%);
 }
 .bottom {
   display: flex;
@@ -478,6 +484,7 @@ button:after {
 
   background: var(--button);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 .book-h2 i {
@@ -504,6 +511,7 @@ button:after {
 }
 .bookmark .fas {
   background: var(--button);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -515,6 +523,7 @@ button:after {
 }
 .no-bookmark i {
   background: var(--button);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: 35px;
@@ -572,6 +581,7 @@ button:after {
   cursor: pointer;
 
   background: var(--button);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -643,6 +653,11 @@ button:after {
     rgba(78, 15, 181, 0) 0%,
     rgb(214, 21, 21, 1) 50%
   );
+  mask-image: linear-gradient(
+    to top,
+    rgba(78, 15, 181, 0) 0%,
+    rgb(214, 21, 21, 1) 50%
+  );
 }
 .ep-header {
   display: flex;
@@ -709,6 +724,7 @@ button:after {
 .next-btn {
   background: var(--button);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 .prev-btn {
