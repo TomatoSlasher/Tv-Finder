@@ -9,9 +9,8 @@ body {
   background-image: var(--dbg);
 
   background-color: #081c22;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   width: 100%;
-  /* height: 125vh; */
 }
 html,
 body {

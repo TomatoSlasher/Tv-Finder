@@ -821,6 +821,7 @@ const loadTv = async function (show) {
     const castJson = await castData.json();
     const epData = await fetch(`https://api.tvmaze.com/shows/${tv.id}/episodes`);
     const epJson = await epData.json();
+    console.log(epJson);
     const cleanEpData = epJson.filter(src => {
       if (!src.image) {
         return;
