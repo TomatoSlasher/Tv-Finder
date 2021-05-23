@@ -450,6 +450,7 @@ const bookmarkTab = document.querySelector(".bookmark-tab");
 const select = document.querySelector(".select");
 const epContainer = document.querySelector(".ep-container");
 const seasonCounter = document.querySelector(".season-counter");
+const seasonContainer = document.querySelector(".season-container");
 const year = document.querySelector(".year");
 const prevBtn = document.querySelector(".bg-color-prev");
 const nextBtn = document.querySelector(".bg-color-next");
@@ -458,12 +459,22 @@ const cast = document.querySelector(".cast");
 const bookmarkUl = document.querySelector(".bookmark-ul");
 const bookmarkClear = document.querySelector(".bookmark-clear");
 const noBookmarksContainer = document.querySelector(".no-bookmarks-container");
+const seasonEpContainer = document.querySelector(".season-ep-container");
+const fullCast = document.querySelector(".full-cast");
+console.log(fullCast);
+console.log(seasonEpContainer);
 const showTv = async function (show1) {
   try {
     await _modelJs.loadTv(show1);
     const {tv} = _modelJs.state;
     let {bookmark} = _modelJs.state;
-    // bookmark.push(tv.id);
+    console.log(tv.cast);
+    if (tv.ep.length === 0) {
+      seasonEpContainer.innerHTML = "";
+    }
+    if (tv.cast.length === 0) {
+      fullCast.classList.add("block");
+    }
     const markup = `
 
  <div class="show-desc">
@@ -561,10 +572,12 @@ const showTv = async function (show1) {
       const year = epFilter[0].airdate.slice(0, 4);
       return year;
     };
-    dynamicYearCounter(showYear(1));
+    if (tv.ep.length > 0) {
+      dynamicYearCounter(showYear(1));
+    }
     const dynamicEp = season => {
       const epMarkup = season.map((x, i) => {
-        return `<div class="ep-list">
+        return `<li class="ep-list">
         <img src="${x.image.original}" alt="photo" />
         <div class="ep-header">
           <h2>${i + 1}.${x.name}</h2>
@@ -572,9 +585,9 @@ const showTv = async function (show1) {
         </div>
 
           <div class='epdesc'>
-                ${x.summary.slice(0, 115)}
+                ${x.summary ? x.summary.slice(0, 115) : ""}
           </div>
-      </div>`;
+      </li>`;
       }).join("");
       epContainer.insertAdjacentHTML("afterbegin", epMarkup);
     };
@@ -790,16 +803,17 @@ const loadTv = async function (show) {
     const descHTML = `
     <p> Could not find Show info</p>
     `;
-    if (!bgImages[0]) {
-      desc.insertAdjacentHTML("afterbegin", descHTML);
+    let bgImage = [];
+    if (bgImages[0]) {
+      bgImage = bgImages[0].resolutions.original.url;
+    } else {
+      bgImage = "";
     }
-    let bgImage = bgImages[0].resolutions.original.url;
     const premier = tv.premiered.substring(0, 4);
     const castData = await fetch(`https://api.tvmaze.com/shows/${tv.id}/cast`);
     const castJson = await castData.json();
     const epData = await fetch(`https://api.tvmaze.com/shows/${tv.id}/episodes`);
     const epJson = await epData.json();
-    // console.log(epJson);
     const cleanEpData = epJson.filter(src => {
       if (!src.image) {
         return;

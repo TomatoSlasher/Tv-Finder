@@ -642,6 +642,9 @@ button:after {
   margin-top: 2rem;
   width: 100%;
 }
+.ep-container li {
+  list-style-type: none;
+}
 .ep-list {
   overflow: hidden;
   width: 25rem;
@@ -744,6 +747,9 @@ button:after {
 }
 .full-cast {
   height: 33rem;
+}
+.block {
+  display: none;
 }
 .cast-h {
   color: white;

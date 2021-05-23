@@ -140,12 +140,12 @@
       this[globalName] = mainExports;
     }
   }
-})({"36V9k":[function(require,module,exports) {
+})({"7zGBV":[function(require,module,exports) {
 var HMR_HOST = null;
 var HMR_PORT = 1234;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d751713988987e9331980363e24189ce";
-module.bundle.HMR_BUNDLE_ID = "d476c242dd1c785ec6a02877f200ddb5";
+module.bundle.HMR_BUNDLE_ID = "4da367ad5940fb87c2608949361e0693";
 // @flow
 /*global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE*/
 /*::
@@ -441,90 +441,7 @@ id) /*: string*/
   acceptedAssets[id] = true;
 }
 
-},{}],"2WHtt":[function(require,module,exports) {
-"use strict";
-var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
-_parcelHelpers.defineInteropFlag(exports);
-_parcelHelpers.export(exports, "controlSearchResaults", function () {
-  return controlSearchResaults;
-});
-var _modelJs = require("./model.js");
-const descId = id => {
-  window.location = "?result=" + id;
-};
-const resultShow = document.querySelector(".show");
-const searchForm = document.querySelector(".search");
-const searchBar = document.querySelector(".search-bar");
-const resultPageSearch = function () {
-  searchForm.addEventListener("submit", function (e) {
-    e.preventDefault();
-    const search = searchBar.value;
-    if (search) {
-      window.document.location = "./result.html" + "?search=" + search;
-    }
-  });
-};
-resultPageSearch(12);
-const controlSearchResaults = async function (name) {
-  try {
-    await _modelJs.loadSearchResaults(name);
-    const dataShort = _modelJs.state.search.results;
-    const data1 = dataShort.map(x => `
-      <li class="show-box">
-      <div class="box">
-            <svg class="outer-circ">
-              <circle class="circ" cx="22" cy="22" r="37"></circle>
-            </svg>
-
-            <div class="percent">
-              <svg>
-              <circle cx="30" cy="30" r="30"></circle>
-              <linearGradient id="linearColors" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#833ab4"></stop>
-      <stop offset="100%" stop-color="#fd1d1d"></stop>
-
-   </linearGradient>
-                <circle id="sec-circ" cx="30" cy="30" r="30" stroke='url(#linearColors)'></circle>
-              </svg>
-              <div class="num">
-                <h2 class="show-rating">
-                  ${x.rating.average ? x.rating.average * 10 + "<i class='fas fa-percentage'></i>" : ''}
-                  <!-- <span class="result-star"> <i class="fas fa-star"></i></span> -->
-                </h2>
-              </div>
-            </div>
-            <!-- <h2 class="text">Progress</h2> -->
-          </div>
-
-              <a href='./desc.html?result=${x.id}'>
-              <div class='result-title'>
-                <img class = "result-img" src="${x.orgImage}" alt="" />
-                <p>${x.title}</p>
-                </div></a>
-              </li>
-
-      `).join("");
-    resultShow.insertAdjacentHTML("beforeend", data1);
-    const box = document.querySelectorAll('.box');
-    const showRating = document.querySelectorAll(".show-rating");
-    const secCircle = document.querySelectorAll("#sec-circ");
-    const showRatingslice = [...showRating].map(a => a.innerText.slice(0, 2));
-    showRatingslice.map((e, index) => secCircle[index].style.strokeDashoffset = `calc(186 - (186 * ${e}) / 100`);
-    box.innerHTML = '';
-    // remove circle if rating is null
-    showRatingslice.map((x, i) => {
-      if (!x) {
-        box[i].innerHTML = '';
-      }
-    });
-  } catch (err) {
-    console.log(err);
-  }
-};
-const searchQuery = window.location.search.split("=")[1];
-controlSearchResaults(searchQuery);
-
-},{"./model.js":"53sO2","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"53sO2":[function(require,module,exports) {
+},{}],"53sO2":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
 _parcelHelpers.export(exports, "state", function () {
@@ -561,17 +478,16 @@ const loadTv = async function (show) {
     const descHTML = `
     <p> Could not find Show info</p>
     `;
-    let bgImage = [];
-    if (bgImages[0]) {
-      bgImage = bgImages[0].resolutions.original.url;
-    } else {
-      bgImage = "";
+    if (!bgImages[0]) {
+      desc.insertAdjacentHTML("afterbegin", descHTML);
     }
+    let bgImage = bgImages[0].resolutions.original.url;
     const premier = tv.premiered.substring(0, 4);
     const castData = await fetch(`https://api.tvmaze.com/shows/${tv.id}/cast`);
     const castJson = await castData.json();
     const epData = await fetch(`https://api.tvmaze.com/shows/${tv.id}/episodes`);
     const epJson = await epData.json();
+    // console.log(epJson);
     const cleanEpData = epJson.filter(src => {
       if (!src.image) {
         return;
@@ -602,6 +518,7 @@ const loadTv = async function (show) {
     console.error(err);
   }
 };
+loadTv();
 const loadSearchResaults = async function (query) {
   try {
     state.search.query = query;
@@ -670,6 +587,6 @@ exports.export = function (dest, destName, get) {
     get: get
   });
 };
-},{}]},["36V9k","2WHtt"], "2WHtt", "parcelRequireef1d")
+},{}]},["7zGBV","53sO2"], "53sO2", "parcelRequireef1d")
 
-//# sourceMappingURL=result.f200ddb5.js.map
+//# sourceMappingURL=desc.361e0693.js.map

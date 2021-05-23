@@ -535,16 +535,17 @@ const loadTv = async function (show) {
     const descHTML = `
     <p> Could not find Show info</p>
     `;
-    if (!bgImages[0]) {
-      desc.insertAdjacentHTML("afterbegin", descHTML);
+    let bgImage = [];
+    if (bgImages[0]) {
+      bgImage = bgImages[0].resolutions.original.url;
+    } else {
+      bgImage = "";
     }
-    let bgImage = bgImages[0].resolutions.original.url;
     const premier = tv.premiered.substring(0, 4);
     const castData = await fetch(`https://api.tvmaze.com/shows/${tv.id}/cast`);
     const castJson = await castData.json();
     const epData = await fetch(`https://api.tvmaze.com/shows/${tv.id}/episodes`);
     const epJson = await epData.json();
-    // console.log(epJson);
     const cleanEpData = epJson.filter(src => {
       if (!src.image) {
         return;
