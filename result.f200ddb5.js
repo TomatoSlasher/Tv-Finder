@@ -550,11 +550,9 @@ const loadTv = async function (show) {
     const res = await fetch(`https://api.tvmaze.com/shows/${show}`);
     const data = await res.json();
     const tv = data;
-    console.log(tv);
     const res2 = await fetch(`https://api.tvmaze.com/shows/${tv.id}/images`);
     const images = await res2.json();
     let bgImages = images.filter(i => i.type == "background");
-    console.log(images);
     if (!bgImages[0]) {
       bgImages = images.filter(i => i.type == "banner");
     }

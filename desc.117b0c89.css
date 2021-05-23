@@ -11,6 +11,7 @@ body {
   background-color: #081c22;
   overflow-y: scroll;
   width: 100%;
+  /* height: 125vh; */
 }
 html,
 body {
@@ -160,6 +161,7 @@ body {
     padding: 0;
     /* display: block; */
     margin-left: 3rem;
+    margin-top: 2rem;
   }
   .ep-list {
     margin-top: 0rem;
@@ -190,7 +192,7 @@ body {
     margin-right: 2rem;
   }
   .percent {
-    margin-left: 0.1rem;
+    margin-left: 0.21rem;
     margin-top: 0rem;
   }
   .search {
@@ -332,7 +334,7 @@ body {
     border-radius: 0;
   }
   .next-prev-box {
-    margin-top: 2rem;
+    margin: 2rem 0rem;
   }
   .cast {
     height: 20rem;
@@ -346,6 +348,10 @@ body {
   }
   .cast img {
     width: 8rem;
+  }
+  .poster-fix {
+    padding: 0;
+    padding-top: 3rem;
   }
 }
 

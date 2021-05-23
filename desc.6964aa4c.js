@@ -461,14 +461,11 @@ const bookmarkClear = document.querySelector(".bookmark-clear");
 const noBookmarksContainer = document.querySelector(".no-bookmarks-container");
 const seasonEpContainer = document.querySelector(".season-ep-container");
 const fullCast = document.querySelector(".full-cast");
-console.log(fullCast);
-console.log(seasonEpContainer);
 const showTv = async function (show1) {
   try {
     await _modelJs.loadTv(show1);
     const {tv} = _modelJs.state;
     let {bookmark} = _modelJs.state;
-    console.log(tv.cast);
     if (tv.ep.length === 0) {
       seasonEpContainer.innerHTML = "";
     }
@@ -547,6 +544,13 @@ const showTv = async function (show1) {
       </div>
       `;
     showDesc.insertAdjacentHTML("beforeend", markup);
+    const descBg = document.querySelector(".bg-image");
+    const posterpremier = document.querySelector(".poster-premier");
+    const findJpg = descBg.src.substring(descBg.src.length - 3);
+    if (findJpg != "jpg") {
+      descBg.classList.add("block");
+      posterpremier.classList.add("poster-fix");
+    }
     const box = document.querySelector(".box");
     const epMap = tv.ep.map((x, i) => x.season);
     const epSeasons = [...new Set(epMap)];
@@ -748,7 +752,6 @@ const showTv = async function (show1) {
       bookmarkUl.innerHTML = "";
       bookmarkIcon.classList.remove("fas");
     });
-    console.log(bookmarkDiv);
     if (showRating[0].innerText == 0) {
       box.innerHTML = "";
       bookmarkDiv.classList.add("bookmark-fix");
@@ -798,11 +801,9 @@ const loadTv = async function (show) {
     const res = await fetch(`https://api.tvmaze.com/shows/${show}`);
     const data = await res.json();
     const tv = data;
-    console.log(tv);
     const res2 = await fetch(`https://api.tvmaze.com/shows/${tv.id}/images`);
     const images = await res2.json();
     let bgImages = images.filter(i => i.type == "background");
-    console.log(images);
     if (!bgImages[0]) {
       bgImages = images.filter(i => i.type == "banner");
     }
