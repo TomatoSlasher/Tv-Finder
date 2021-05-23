@@ -276,11 +276,11 @@ body {
   }
   .desc {
     text-align: left;
-    width: 90%;
+    width: 95%;
     margin-left: 1rem;
   }
   .desc p {
-    width: 90%;
+    width: 100%;
   }
   .season-year {
     margin: 0;
