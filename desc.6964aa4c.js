@@ -547,6 +547,7 @@ const showTv = async function (show1) {
       </div>
       `;
     showDesc.insertAdjacentHTML("beforeend", markup);
+    const box = document.querySelector(".box");
     const epMap = tv.ep.map((x, i) => x.season);
     const epSeasons = [...new Set(epMap)];
     if (epSeasons.length == 1) {
@@ -747,6 +748,11 @@ const showTv = async function (show1) {
       bookmarkUl.innerHTML = "";
       bookmarkIcon.classList.remove("fas");
     });
+    console.log(bookmarkDiv);
+    if (showRating[0].innerText == 0) {
+      box.innerHTML = "";
+      bookmarkDiv.classList.add("bookmark-fix");
+    }
   } catch (err) {
     console.log(err);
   }

@@ -515,6 +515,11 @@ button:after {
 .bookmark:hover {
   opacity: 0.8;
 }
+.bookmark-fix {
+  margin: 0;
+  padding: 0;
+  margin-top: 2rem;
+}
 .bookmark .fas {
   background: var(--button);
   background-clip: text;
