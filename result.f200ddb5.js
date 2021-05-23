@@ -565,19 +565,20 @@ const loadTv = async function (show) {
     } else {
       bgImage = "";
     }
-    const premier = tv.premiered.substring(0, 4);
+    let premier = tv.premiered.substring(0, 4);
+    if (!premier) {
+      premier = "";
+    }
     const castData = await fetch(`https://api.tvmaze.com/shows/${tv.id}/cast`);
     const castJson = await castData.json();
     const epData = await fetch(`https://api.tvmaze.com/shows/${tv.id}/episodes`);
     const epJson = await epData.json();
-    console.log(epJson);
     const cleanEpData = epJson.filter(src => {
       if (!src.image) {
         return;
       }
       return src;
     });
-    // console.log(cleanEpData);
     state.tv = {
       id: tv.id,
       language: tv.language,

@@ -466,6 +466,7 @@ const showTv = async function (show1) {
     await _modelJs.loadTv(show1);
     const {tv} = _modelJs.state;
     let {bookmark} = _modelJs.state;
+    console.log(tv.premier);
     if (tv.ep.length === 0) {
       seasonEpContainer.innerHTML = "";
     }
@@ -697,8 +698,8 @@ const showTv = async function (show1) {
       existingEntries.push(entry);
       localStorage.setItem("allEntries", JSON.stringify(existingEntries));
     }
-    const items = JSON.parse(localStorage.getItem("allEntries"));
-    if (!items) {
+    let items = JSON.parse(localStorage.getItem("allEntries"));
+    if (items.length == 0) {
       const noBookmarksMarkup = `
       <h2 class="no-bookmark">
           No bookmarks added
@@ -710,27 +711,48 @@ const showTv = async function (show1) {
     bookmarkTab.addEventListener("click", () => {
       bookmarkList.classList.toggle("display-block");
     });
-    bookmarkDiv.addEventListener("click", () => {
+    const itemsFilter = items.map(x => x.id);
+    console.log(itemsFilter);
+    const cleanItemsId = [...new Set(itemsFilter)];
+    bookmarkDiv.addEventListener("click", e => {
       bookmarkIcon.classList.toggle("fas");
       if (bookmarkIcon.classList.contains("fas")) {
         addBookmark();
       }
-    });
-    function bookmarkAll(params) {
-      const itemsFilter = items.map(x => x.id);
-      const cleanItemsId = [...new Set(itemsFilter)];
-      bookmarkDiv.addEventListener("click", () => {
-        if (bookmarkIcon.classList.contains("fas") == false) {
-          items.splice(cleanItemsId.indexOf(tv.id), 1);
-          localStorage.setItem("allEntries", JSON.stringify(items));
-        }
-      });
-      if (cleanItemsId.includes(tv.id)) {
-        bookmarkIcon.classList.add("fas");
+      const entry2 = JSON.parse(localStorage.getItem("allEntries"));
+      const index = entry2.findIndex(x => x.id === tv.id);
+      if (bookmarkIcon.classList.contains("fas") == false) {
+        items.splice(index, 1);
+        localStorage.setItem("allEntries", JSON.stringify(items));
       }
-    }
-    if (items) {
-      bookmarkAll();
+      noBookmarksContainer.innerHTML = "";
+      bookmarkUl.innerHTML = "";
+      const entry = JSON.parse(localStorage.getItem("allEntries"));
+      const bookmarkMarkup2 = entry.map((x, i) => {
+        return `
+        <a href='desc.html?result=${x.id}'>
+        <li>
+              <img src="${x.image}" alt="" />
+              <div class="bookmark-el-txt">
+                <h2>${x.title} (${x.premier})</h2>
+
+              </div>
+            </li>
+            `;
+      }).join("");
+      bookmarkUl.insertAdjacentHTML("afterbegin", bookmarkMarkup2);
+      if (entry.length == 0) {
+        const noBookmarksMarkup2 = `
+      <h2 class="no-bookmark">
+          No bookmarks added
+          <i class="far fa-frown-open"></i>
+        </h2>
+      `;
+        noBookmarksContainer.insertAdjacentHTML("afterbegin", noBookmarksMarkup2);
+      }
+    });
+    if (cleanItemsId.includes(tv.id)) {
+      bookmarkIcon.classList.add("fas");
     }
     if (items) {
       const bookmarkMarkup = items.map((x, i) => {
@@ -816,19 +838,20 @@ const loadTv = async function (show) {
     } else {
       bgImage = "";
     }
-    const premier = tv.premiered.substring(0, 4);
+    let premier = tv.premiered.substring(0, 4);
+    if (!premier) {
+      premier = "";
+    }
     const castData = await fetch(`https://api.tvmaze.com/shows/${tv.id}/cast`);
     const castJson = await castData.json();
     const epData = await fetch(`https://api.tvmaze.com/shows/${tv.id}/episodes`);
     const epJson = await epData.json();
-    console.log(epJson);
     const cleanEpData = epJson.filter(src => {
       if (!src.image) {
         return;
       }
       return src;
     });
-    // console.log(cleanEpData);
     state.tv = {
       id: tv.id,
       language: tv.language,
