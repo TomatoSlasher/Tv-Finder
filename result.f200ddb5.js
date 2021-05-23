@@ -488,7 +488,7 @@ const controlSearchResaults = async function (name) {
               </svg>
               <div class="num">
                 <h2 class="show-rating">
-                  ${x.rating.average ? x.rating.average * 10 + "<i class='fas fa-percentage'></i>" : "NaN"}
+                  ${x.rating.average ? x.rating.average * 10 + "<i class='fas fa-percentage'></i>" : ''}
                   <!-- <span class="result-star"> <i class="fas fa-star"></i></span> -->
                 </h2>
               </div>
@@ -505,10 +505,18 @@ const controlSearchResaults = async function (name) {
 
       `).join("");
     resultShow.insertAdjacentHTML("beforeend", data1);
+    const box = document.querySelectorAll('.box');
     const showRating = document.querySelectorAll(".show-rating");
     const secCircle = document.querySelectorAll("#sec-circ");
     const showRatingslice = [...showRating].map(a => a.innerText.slice(0, 2));
     showRatingslice.map((e, index) => secCircle[index].style.strokeDashoffset = `calc(186 - (186 * ${e}) / 100`);
+    box.innerHTML = '';
+    // remove circle if rating is null
+    showRatingslice.map((x, i) => {
+      if (!x) {
+        box[i].innerHTML = '';
+      }
+    });
   } catch (err) {
     console.log(err);
   }
@@ -542,14 +550,13 @@ const loadTv = async function (show) {
     const res = await fetch(`https://api.tvmaze.com/shows/${show}`);
     const data = await res.json();
     const tv = data;
+    console.log(tv);
     const res2 = await fetch(`https://api.tvmaze.com/shows/${tv.id}/images`);
     const images = await res2.json();
     let bgImages = images.filter(i => i.type == "background");
-    console.log(bgImages);
     console.log(images);
     if (!bgImages[0]) {
       bgImages = images.filter(i => i.type == "banner");
-      console.log(bgImages);
     }
     const descHTML = `
     <p> Could not find Show info</p>
@@ -613,7 +620,6 @@ const loadSearchResaults = async function (query) {
         orgImage: rec.show.image.original,
         rating: rec.show.rating
       };
-      // console.log(object);
       return object;
     });
   } catch (err) {

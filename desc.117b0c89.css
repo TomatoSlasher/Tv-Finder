@@ -91,9 +91,10 @@ body {
     display: block;
     width: 100%;
   }
-  /* .wrapper {
-    overflow: hidden !important;
-  } */
+
+  .percent{
+    margin-top: 0.1rem
+  }
   .desc-header-right {
     display: flex;
     justify-content: center;
@@ -183,8 +184,8 @@ body {
     margin-right: 2rem;
   }
   .percent {
-    margin-left: 0.3rem;
-    margin-top: 0.1rem;
+    margin-left: 0.1rem;
+    margin-top: 0rem;
   }
   .search {
     /* margin: 0; */

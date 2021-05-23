@@ -458,14 +458,12 @@ const cast = document.querySelector(".cast");
 const bookmarkUl = document.querySelector(".bookmark-ul");
 const bookmarkClear = document.querySelector(".bookmark-clear");
 const noBookmarksContainer = document.querySelector(".no-bookmarks-container");
-console.log(noBookmarksContainer);
 const showTv = async function (show1) {
   try {
     await _modelJs.loadTv(show1);
     const {tv} = _modelJs.state;
     let {bookmark} = _modelJs.state;
     // bookmark.push(tv.id);
-    console.log(tv.ep);
     const markup = `
 
  <div class="show-desc">
@@ -586,7 +584,6 @@ const showTv = async function (show1) {
     };
     showEp(1);
     const epFilter1 = tv.ep.filter(x => x.season == 1);
-    console.log(select.value);
     select.addEventListener("change", e => {
       epContainer.innerHTML = "";
       seasonCounter.innerHTML = "";
@@ -782,14 +779,13 @@ const loadTv = async function (show) {
     const res = await fetch(`https://api.tvmaze.com/shows/${show}`);
     const data = await res.json();
     const tv = data;
+    console.log(tv);
     const res2 = await fetch(`https://api.tvmaze.com/shows/${tv.id}/images`);
     const images = await res2.json();
     let bgImages = images.filter(i => i.type == "background");
-    console.log(bgImages);
     console.log(images);
     if (!bgImages[0]) {
       bgImages = images.filter(i => i.type == "banner");
-      console.log(bgImages);
     }
     const descHTML = `
     <p> Could not find Show info</p>
@@ -853,7 +849,6 @@ const loadSearchResaults = async function (query) {
         orgImage: rec.show.image.original,
         rating: rec.show.rating
       };
-      // console.log(object);
       return object;
     });
   } catch (err) {

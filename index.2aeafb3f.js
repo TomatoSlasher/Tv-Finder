@@ -524,14 +524,13 @@ const loadTv = async function (show) {
     const res = await fetch(`https://api.tvmaze.com/shows/${show}`);
     const data = await res.json();
     const tv = data;
+    console.log(tv);
     const res2 = await fetch(`https://api.tvmaze.com/shows/${tv.id}/images`);
     const images = await res2.json();
     let bgImages = images.filter(i => i.type == "background");
-    console.log(bgImages);
     console.log(images);
     if (!bgImages[0]) {
       bgImages = images.filter(i => i.type == "banner");
-      console.log(bgImages);
     }
     const descHTML = `
     <p> Could not find Show info</p>
@@ -595,7 +594,6 @@ const loadSearchResaults = async function (query) {
         orgImage: rec.show.image.original,
         rating: rec.show.rating
       };
-      // console.log(object);
       return object;
     });
   } catch (err) {
