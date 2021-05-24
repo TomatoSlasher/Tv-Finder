@@ -699,7 +699,8 @@ const showTv = async function (show1) {
       localStorage.setItem("allEntries", JSON.stringify(existingEntries));
     }
     let items = JSON.parse(localStorage.getItem("allEntries"));
-    if (items.length == 0) {
+    console.log(items);
+    if (!items) {
       const noBookmarksMarkup = `
       <h2 class="no-bookmark">
           No bookmarks added
@@ -711,7 +712,10 @@ const showTv = async function (show1) {
     bookmarkTab.addEventListener("click", () => {
       bookmarkList.classList.toggle("display-block");
     });
-    const itemsFilter = items.map(x => x.id);
+    let itemsFilter = [];
+    if (items) {
+      itemsFilter = items.map(x => x.id);
+    }
     console.log(itemsFilter);
     const cleanItemsId = [...new Set(itemsFilter)];
     bookmarkDiv.addEventListener("click", e => {
@@ -722,8 +726,8 @@ const showTv = async function (show1) {
       const entry2 = JSON.parse(localStorage.getItem("allEntries"));
       const index = entry2.findIndex(x => x.id === tv.id);
       if (bookmarkIcon.classList.contains("fas") == false) {
-        items.splice(index, 1);
-        localStorage.setItem("allEntries", JSON.stringify(items));
+        entry2.splice(index, 1);
+        localStorage.setItem("allEntries", JSON.stringify(entry2));
       }
       noBookmarksContainer.innerHTML = "";
       bookmarkUl.innerHTML = "";
@@ -773,6 +777,13 @@ const showTv = async function (show1) {
       localStorage.clear();
       bookmarkUl.innerHTML = "";
       bookmarkIcon.classList.remove("fas");
+      const noBookmarksMarkup3 = `
+      <h2 class="no-bookmark">
+          No bookmarks added
+          <i class="far fa-frown-open"></i>
+        </h2>
+      `;
+      noBookmarksContainer.insertAdjacentHTML("afterbegin", noBookmarksMarkup3);
     });
     if (showRating[0].innerText == 0) {
       box.innerHTML = "";
