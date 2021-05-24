@@ -455,6 +455,7 @@ const descId = id => {
 const resultShow = document.querySelector(".show");
 const searchForm = document.querySelector(".search");
 const searchBar = document.querySelector(".search-bar");
+const resultDom = document.querySelector(".results");
 const resultPageSearch = function () {
   searchForm.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -488,7 +489,7 @@ const controlSearchResaults = async function (name) {
               </svg>
               <div class="num">
                 <h2 class="show-rating">
-                  ${x.rating.average ? x.rating.average * 10 + "<i class='fas fa-percentage'></i>" : ''}
+                  ${x.rating.average ? x.rating.average * 10 + "<i class='fas fa-percentage'></i>" : ""}
                   <!-- <span class="result-star"> <i class="fas fa-star"></i></span> -->
                 </h2>
               </div>
@@ -505,18 +506,31 @@ const controlSearchResaults = async function (name) {
 
       `).join("");
     resultShow.insertAdjacentHTML("beforeend", data1);
-    const box = document.querySelectorAll('.box');
+    const box = document.querySelectorAll(".box");
     const showRating = document.querySelectorAll(".show-rating");
     const secCircle = document.querySelectorAll("#sec-circ");
     const showRatingslice = [...showRating].map(a => a.innerText.slice(0, 2));
     showRatingslice.map((e, index) => secCircle[index].style.strokeDashoffset = `calc(186 - (186 * ${e}) / 100`);
-    box.innerHTML = '';
+    box.innerHTML = "";
     // remove circle if rating is null
     showRatingslice.map((x, i) => {
       if (!x) {
-        box[i].innerHTML = '';
+        box[i].innerHTML = "";
       }
     });
+    console.log(dataShort);
+    if (dataShort.length == 0) {
+      const noResultMarkup = `
+<div class="no-result">
+        <div class="no-result-container">
+          <h2>
+            Can not find results for '${searchQuery}' <i class="far fa-frown-open"></i>
+          </h2>
+        </div>
+      </div>
+      `;
+      resultDom.insertAdjacentHTML("afterbegin", noResultMarkup);
+    }
   } catch (err) {
     console.log(err);
   }
@@ -573,6 +587,7 @@ const loadTv = async function (show) {
     const castJson = await castData.json();
     const epData = await fetch(`https://api.tvmaze.com/shows/${tv.id}/episodes`);
     const epJson = await epData.json();
+    console.log(epJson);
     const cleanEpData = epJson.filter(src => {
       if (!src.image) {
         return;

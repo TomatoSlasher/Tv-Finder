@@ -207,6 +207,22 @@ button:after {
   width: 37rem;
   height: auto;
 }
+.no-result {
+  color: white;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10rem;
+  text-align: center;
+}
+.no-result i {
+  background: var(--bg);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-left: 0.5rem;
+}
 .search {
   margin-top: 2rem;
 

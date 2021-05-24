@@ -70,6 +70,12 @@ body {
     margin-top: 3rem;
     margin-right: 1.5rem;
   }
+  .no-result {
+    font-size: 25px;
+  }
+  .no-result-container {
+    margin: 2rem;
+  }
   .show-box {
     display: table;
     margin: 0px auto 0px auto;

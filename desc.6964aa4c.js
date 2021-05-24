@@ -492,7 +492,7 @@ const showTv = async function (show1) {
             <div class="h1-rating">
               <div class="title">
                 <h1>${tv.title}</h1>
-                <p>${tv.genre} | ${tv.duration}m | ${tv.premier}</p>
+                <p>${tv.genre ? tv.genre + " | " : ""}${tv.duration ? tv.duration + "m |" : ""}  ${tv.premier ? tv.premier : ""}</p>
               </div>
             </div>
             <div class="rating-bookmark">
@@ -699,7 +699,6 @@ const showTv = async function (show1) {
       localStorage.setItem("allEntries", JSON.stringify(existingEntries));
     }
     let items = JSON.parse(localStorage.getItem("allEntries"));
-    console.log(items);
     if (!items) {
       const noBookmarksMarkup = `
       <h2 class="no-bookmark">
@@ -857,6 +856,7 @@ const loadTv = async function (show) {
     const castJson = await castData.json();
     const epData = await fetch(`https://api.tvmaze.com/shows/${tv.id}/episodes`);
     const epJson = await epData.json();
+    console.log(epJson);
     const cleanEpData = epJson.filter(src => {
       if (!src.image) {
         return;
